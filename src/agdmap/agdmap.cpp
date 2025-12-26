@@ -2169,7 +2169,8 @@ static int node_counter = 0;
     {
       pCut bin_cut = bin->cutGen(complemented, virtual_nodes);
       area += (bin_cut->getArea() - 1.0) / (Area)bin->root_->fanoutNum() + 1.0;
-      Function temp_func = bin->root_->name();
+      // Function temp_func = bin->root_->name();
+	  Function temp_func = "n" + std::to_string( bin->root_->getId() );
       if (complemented.count(bin->root_) == 1)
       {
         temp_func = ~temp_func;

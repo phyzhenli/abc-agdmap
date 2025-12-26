@@ -59,8 +59,8 @@ int Agdmap(Abc_Frame_t *pAbc, int argc, char **argv)
     Abc_Ntk_t *res = nullptr;
     AgdMap::Para para(k, w, !delay, verbose);
 
-    std::cout << "\n"
-              << ntk->pName << "\t is running ... \n";
+    if ( ntk->pName != NULL )       // aviod undefined behavior
+      std::cout << "\n" << ntk->pName << "\t is running ... \n";
     AgdMap::Mapper mapper(ntk, para);
     if (mapper.map() != 0)
       std::cout << "adgmap failed!\n";
